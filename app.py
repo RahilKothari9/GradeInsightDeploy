@@ -39,7 +39,7 @@ def upload_file():
 @app.route('/viewmarks/<filename>')
 def upload(filename):
     #get filename from db;
-    filename = 'template.xlsx'
+    
     xl = 'uploads/'+filename
     df = pd.read_excel(io = xl)
     return render_template('viewmarks.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
