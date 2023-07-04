@@ -1,0 +1,1 @@
+CREATE TABLE if not exists teacher_entry(Username VARCHAR(24), SomaiyaId VARCHAR(255), Password VARCHAR(200))
