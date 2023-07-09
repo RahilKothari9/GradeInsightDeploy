@@ -47,11 +47,13 @@ def login():
 
         # Query from database for entry which matches email
         # For now Im keeping 12345 as password
+        # df {user_id : [1], email : [abc@gmail.com], password_hash : 0xfbdn}
         db_entry = [{"user_id" : 1, "email" : "abc@gmail.com", "password" : generate_password_hash("12345")}]
 
         if len(db_entry) != 1 or not check_password_hash(db_entry[0]["password"], password):
             return error("Invalid username or password")
 
+        #set user id to primary key
         session["user_id"] = db_entry[0]["user_id"]
         return redirect("/")
 
@@ -79,6 +81,20 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route("/addacourse", methods=['GET', 'POST'])
+@login_required
+def addacourse():
+    if request.method == "GET":
+        return render_template("addacourse.html")
+    else:
+        if not request.form.get("name"):
+            return error("Course Name not entered")
+        course_name = request.form.get("name")
+        user_id = session["user_id"]
+        # Database Entry 1. course name 2. user who created the course
+
+
+        return redirect("/")
 @app.route("/")
 @login_required
 def hello_world():
