@@ -65,9 +65,9 @@ def login():
                 session["user_id"] = account[0]
                 x = str(session["user_id"])
                 return redirect("/")
-            return error("Wrong credientials!")
+            return error("Wrong credentials!")
         else:
-            return error("Wrong credientials!")
+            return error("Wrong credentials!")
     else:
         return render_template("login.html")
     
