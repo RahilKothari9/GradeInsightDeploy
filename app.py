@@ -5,6 +5,15 @@ import pandas as pd
 from flask_session import Session
 from helpers import login_required, error
 from werkzeug.security import check_password_hash, generate_password_hash
+import mysql.connector
+import sqlalchemy
+
+mydb = mysql.connector.connect(
+    host = "sql6.freesqldatabase.com",
+    user = "sql6631415",
+    password = "WUj4HddHA2",
+    database = "sql6631415"
+)
 
 app = Flask(__name__)
 
@@ -46,11 +55,14 @@ def login():
         password = request.form.get("password")
 
         # Query from database for entry which matches email
-        # For now Im keeping 12345 as password
-        db_entry = [{"user_id" : 1, "email" : "abc@gmail.com", "password" : generate_password_hash("12345")}]
+        #Converted table to DataFrame and then checked whether the crediantials are available or not..
 
-        if len(db_entry) != 1 or not check_password_hash(db_entry[0]["password"], password):
-            return error("Invalid username or password")
+        engine = sqlalchemy.create_engine('mysql+pymysql://sql6631415:WUj4HddHA2@sql6.freesqldatabase.com:3306/sql6631415')
+        df = pd.read_sql_table("teacher_entry", engine)
+        if((email in set(df["email"])) & (password in set(df["password"]))):
+            return render_template("fileupload.html")
+        else:
+            return "Wrong credientials...!!"
 
         session["user_id"] = db_entry[0]["user_id"]
         return redirect("/")
@@ -71,10 +83,22 @@ def register():
         password = request.form.get("password")
         confirmation = request.form.get("confirmation")
 
+
+
         if password != confirmation:
             return error("password and confirmation do not match")
         
         # Enter this info into database, email, password as a hash, and primary key will be user_id
+
+        mycursor = mydb.cursor()
+        mycursor.execute("CREATE TABLE if not exists teacher_entry (teacher_id int NOT NULL AUTO_INCREMENT, email varchar(255) NOT NULL,password varchar(255), PRIMARY KEY (teacher_id))")
+        sql = "INSERT INTO teacher_entry(email ,Password) VALUES (%s , %s)"
+        val = (email, password)
+        mycursor.execute(sql , val)
+        mydb.commit()
+
+
+        print("Value inserted !")
         return redirect("/login")
     else:
         return render_template("register.html")
