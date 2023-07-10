@@ -53,21 +53,21 @@ def login():
         
         email = request.form.get("email")
         password = request.form.get("password")
-
+        password_hash = generate_password_hash(password)
         # Query from database for entry which matches email
         #Converted table to DataFrame and then checked whether the crediantials are available or not
 
-        engine = sqlalchemy.create_engine('mysql+pymysql://sql6631415:WUj4HddHA2@sql6.freesqldatabase.com:3306/sql6631415')
-        df = pd.read_sql_table("teacher_entry", engine)
-        if((email in set(df["email"])) & (password in set(df["password"]))):
-            return render_template("fileupload.html")
+        cursor = mydb.cursor()
+        cursor.execute('SELECT * FROM teacher_entry WHERE email = %s', (email,))
+        account = cursor.fetchone()
+        if account:
+            if check_password_hash(account[2], password):
+                session["user_id"] = account[0]
+                x = str(session["user_id"])
+                return redirect("/")
+            return error("Wrong credientials!")
         else:
-            return "Wrong credientials...!!"
-
-        #set user id to primary key
-        session["user_id"] = db_entry[0]["user_id"]
-        return redirect("/")
-
+            return error("Wrong credientials!")
     else:
         return render_template("login.html")
     
@@ -90,16 +90,13 @@ def register():
             return error("password and confirmation do not match")
         
         # Enter this info into database, email, password as a hash, and primary key will be user_id
-
+        password_hash = generate_password_hash(password)
         mycursor = mydb.cursor()
         mycursor.execute("CREATE TABLE if not exists teacher_entry (teacher_id int NOT NULL AUTO_INCREMENT, email varchar(255) NOT NULL,password varchar(255), PRIMARY KEY (teacher_id))")
         sql = "INSERT INTO teacher_entry(email ,Password) VALUES (%s , %s)"
-        val = (email, password)
+        val = (email, password_hash)
         mycursor.execute(sql , val)
         mydb.commit()
-
-
-        print("Value inserted !")
         return redirect("/login")
     else:
         return render_template("register.html")
