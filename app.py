@@ -55,7 +55,7 @@ def login():
         password = request.form.get("password")
 
         # Query from database for entry which matches email
-        #Converted table to DataFrame and then checked whether the crediantials are available or not..
+        #Converted table to DataFrame and then checked whether the crediantials are available or not
 
         engine = sqlalchemy.create_engine('mysql+pymysql://sql6631415:WUj4HddHA2@sql6.freesqldatabase.com:3306/sql6631415')
         df = pd.read_sql_table("teacher_entry", engine)
@@ -64,6 +64,7 @@ def login():
         else:
             return "Wrong credientials...!!"
 
+        #set user id to primary key
         session["user_id"] = db_entry[0]["user_id"]
         return redirect("/")
 
@@ -103,6 +104,20 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route("/addacourse", methods=['GET', 'POST'])
+@login_required
+def addacourse():
+    if request.method == "GET":
+        return render_template("addacourse.html")
+    else:
+        if not request.form.get("name"):
+            return error("Course Name not entered")
+        course_name = request.form.get("name")
+        user_id = session["user_id"]
+        # Database Entry 1. course name 2. user who created the course
+
+
+        return redirect("/")
 @app.route("/")
 @login_required
 def hello_world():
