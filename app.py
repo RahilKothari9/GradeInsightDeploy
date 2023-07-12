@@ -112,8 +112,12 @@ def addacourse():
         course_name = request.form.get("name")
         user_id = session["user_id"]
         # Database Entry 1. course name 2. user who created the course
-
-
+        mycursor = mydb.cursor()
+        mycursor.execute("CREATE TABLE if not exists courses(course_id int NOT NULL AUTO_INCREMENT, teacher_id int, course_name VARCHAR(200) NOT NULL, PRIMARY KEY (course_id), FOREIGN KEY (teacher_id) REFERENCES teacher_entry(teacher_id));")
+        sql = "INSERT INTO courses(teacher_id ,course_name) VALUES (%s , %s)"
+        val = (user_id, course_name)
+        mycursor.execute(sql , val)
+        mydb.commit()
         return redirect("/")
 @app.route("/")
 @login_required
