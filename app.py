@@ -135,7 +135,18 @@ def display_courses():
         return render_template("courses.html", courses=courses)
     else:
         return error("You do not have any courses(Frontend peeps add a link to addacourse page)")
-
+@app.route("/course/<course_id>", methods = ["GET"])
+@login_required
+def course(course_id):
+    mycursor = mydb.cursor()
+    
+    sql = "SELECT * FROM courses WHERE course_id = %s"
+    val = (course_id,)
+    mycursor.execute(sql , val)
+    courses = mycursor.fetchone()
+    if courses[1] != session["user_id"]:
+        return error("You Cannot access this page")
+    return render_template("courseview.html", course_id = course_id, course_info=courses)
 @app.route("/")
 @login_required
 def hello_world():
