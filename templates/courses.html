@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Courses
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {%for course in courses%}
+        <!-- <li>Hi!</li> -->
+        <li><a href="/viewmarks/{{course[0]}}">{{course[0]}} - {{ course[2] }}</a></li>
+        {%endfor%}
+    </ul>
+    <a href="/addacourse"> Add A Course</a>
+{% endblock %}
