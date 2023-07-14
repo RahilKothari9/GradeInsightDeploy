@@ -15,4 +15,4 @@ def login_required(f):
     return decorated_function
 
 def error(message):
-    return render_template("error.html", message=message)
+    return render_template("123.html", message=message)
