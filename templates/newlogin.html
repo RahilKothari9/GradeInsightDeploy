@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="static/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script defer src="static/login.js"></script>
+</head>
+<body>
+    <div class="full_body"  class="col-lg-4 col-md-6 sx-12">
+        <div class="left_coloumn" >
+
+        </div>
+        <div class="right_coloumn " >
+            <div class="logo_wrapper">
+                <div class="logo_img">
+                    <img src="static/images/Union123.png" alt="" class="logo">
+                </div>
+                <div class="name">
+                    <h1 class="gradeinsihgt">GradeInsight</h1>
+                    <h2 class="slogan">Elevate Education with Personalized Communication</h2>
+                </div>
+            </div>
+            
+            <div class="login_wrapper">
+                
+                <div class="login">
+                    
+                    <div class="img_login">
+                        <img src="static/images/🦆 icon _user_loginlogo.png" alt="" class="login_img">
+                    </div>
+                    <div class="login_to_acc">Login to your account!</div>
+                    <form action="/login" method="post">
+                    <div class="username_wrapper">
+                        <input type="text" class="username" id="email" name="email" placeholder="EMAIL ID">
+                    </div>
+                    <div class="password_wrapper">
+                        <input type="password" class="password" id="password" name="password" placeholder="PASSWORD">
+                        <i class="far fa-eye" id="togglePassword"></i>
+                    </div>
+                    <div class="forget_password">
+                        Forgot password?
+                    </div>
+                    <button class="sign_in" type="submit">SIGN IN</button>
+                </div>
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            
+            <!-- <div class="login">
+                <img id="logo" width="100" height="100" src="data:image/png;base64,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">
+            
+                <h2>  Login to your Account!</h2>
+                <form action="/login" method="post">
+                  
+                <div class="email_wrapper">
+                    <div class="email1">
+                      <input id="email" name="email" placeholder="Email Id" type="text">
+                    </div>
+                </div>
+                <div class="pwd_wrapper">
+                  <div class="pwd1">
+                      <input id="password" name="password" placeholder="Password" type="password">
+                  </div>
+                </div>
+                <div class="remember">
+                    <div class="remember_wrapper">
+                        <div class="remem">
+                            <label><input type="checkbox">Remember Me</label>
+                        </div>
+                        <div class="forgotpwd">
+                            <a href="/"> <h5>Forgot Password?</h5></a>
+                        </div>
+                    </div>
+                </div>
+                  <div class="signin">
+                      <button type="submit" href="addCourse.html">Sign In</button>
+                  </div>
+                </form>
+            </div> -->
+        </div>
+    </div>
+   
+</body>
+</html>

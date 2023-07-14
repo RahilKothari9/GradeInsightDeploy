@@ -70,7 +70,7 @@ def login():
         else:
             return error("Wrong credentials!")
     else:
-        return render_template("login.html")
+        return render_template("newlogin.html")
     
 @app.route("/register", methods = ["GET", "POST"])
 def register():
@@ -129,7 +129,7 @@ def display_courses():
     val = (session["user_id"],)
     mycursor.execute(sql , val)
     courses = mycursor.fetchall()
-    print(courses)
+    #print(courses)
     if courses:
         
         return render_template("courses.html", courses=courses)
@@ -185,6 +185,8 @@ def upload(filename):
         return error("You have not uploaded an excel file for this yet.(Frontend peeps link to /fileupload/course_id pls)")
     xl = 'uploads/'+filename
     df = pd.read_excel(io = xl)
+    #print(1)
+    print(df)
     return render_template('viewmarks.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 if __name__ == "__main__":
