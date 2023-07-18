@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Inknut Antiqua";
+    src: url(https://fonts.google.com/?preview.size=23&query=Inknut+Antiqua);
+}
+.full_body{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+.left_coloumn{
+    
+    width: 30%;
+    background: linear-gradient(180deg, #ED1C24 0%, rgba(183, 32, 46, 0.84) 100%);
+
+}
+.right_coloumn{
+    width: 100%;
+}
+
+.logo{
+    height: 87.78%;
+    width: 60%;
+}
+.logo_img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    background: rgba(80, 105, 193, 1);
+    
+
+}
+
+.logo_wrapper{
+    width: 100%;
+    padding-top: 2%;
+    display: flex;
+    flex-direction: row;
+    padding-left:5%;
+    justify-content:flex-start;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.name{
+    /* font-size: 110%; */
+    padding-left: 3%;
+    font-family: "Inknut Antiqua";
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    justify-content: center;
+   
+}
+.gradeinsihgt{
+    font-size: 250%;
+    font-family: "Inknut Antiqua";
+    font-weight: 400;
+    /* line-height:150%; */
+}
+
+
+
+.login_wrapper{
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-family: 'Source Serif 4', serif;
+ 
+}
+.login{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgb(245, 237, 226);
+  align-items: center;
+  border: 1px solid black;
+  
+}
+.img_login{
+    padding-top:2.5%;
+}
+.username_wrapper, .password_wrapper{
+  width: 40%;
+  display: flex;
+  align-content: center;
+}
+.password_wrapper{
+  padding-top: 2%;
+}
+.username, .password{
+  background: rgb(91, 146, 200);
+  height: 8vh;
+  border-radius: 7px;
+  width: 150%;
+  font-size: large;
+}
+.login_to_acc{
+  font-size: 250%;
+  font-family: 'Source Serif 4', serif;
+}
+
+.forget_password:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sign_in{
+  width: 25%;
+  background: rgb(91, 146, 200);
+  height: 8vh;
+  border-radius: 7px;
+  font-family: 'Source Serif 4', serif;
+  cursor: pointer;
+  font-size: large;
+}
+::placeholder{
+  color: black;
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  padding-left: 2%;
+}
+.far{
+  position: absolute;
+ 
+  top: 50%;
+  right: 5%;  
+  cursor: pointer;
+  
+}
+.far:hover{
+  color: gray;
+}
+.password_wrapper{
+  position: relative;
+}
+
+
