@@ -175,7 +175,7 @@ def upload_file(course_id):
             file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
             # Make a db entry for the file for particular user and subject
             return redirect(url_for('upload', filename=filename))
-    return render_template('fileupload.html', course_id=course_id)
+    return render_template('dragdrop.html', course_id=course_id)
 
 @app.route('/viewmarks/<filename>')
 @login_required
