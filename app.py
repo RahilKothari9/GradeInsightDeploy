@@ -11,9 +11,9 @@ import sqlalchemy
 
 mydb = mysql.connector.connect(
     host = "sql6.freesqldatabase.com",
-    user = "sql6631415",
-    password = "WUj4HddHA2",
-    database = "sql6631415"
+    user = "sql6634008",
+    password = "R77N6kY66R",
+    database = "sql6634008"
 )
 
 app = Flask(__name__)
