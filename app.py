@@ -11,9 +11,9 @@ import sqlalchemy
 
 mydb = mysql.connector.connect(
     host = "sql6.freesqldatabase.com",
-    user = "sql6631415",
-    password = "WUj4HddHA2",
-    database = "sql6631415"
+    user = "sql6634008",
+    password = "R77N6kY66R",
+    database = "sql6634008"
 )
 
 app = Flask(__name__)
@@ -162,20 +162,23 @@ def upload_file(course_id):
     if request.method == 'POST':
         
         if 'file' not in request.files:
+            print("DIDNT GET FILE 1")
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
         
         if file.filename == '':
+            print("DIDNT GET FILE 2")
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
+            print("GOT FILE")
             filename = secure_filename(file.filename)
             filename = course_id
             file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
             # Make a db entry for the file for particular user and subject
             return redirect(url_for('upload', filename=filename))
-    return render_template('fileupload.html', course_id=course_id)
+    return render_template('dragdrop.html', course_id=course_id)
 
 @app.route('/viewmarks/<filename>')
 @login_required
