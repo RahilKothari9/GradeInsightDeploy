@@ -7,13 +7,13 @@ from helpers import login_required, error
 from werkzeug.security import check_password_hash, generate_password_hash
 import mysql.connector
 from pathlib import Path
-import sqlalchemy
+
 
 mydb = mysql.connector.connect(
     host = "sql6.freesqldatabase.com",
-    user = "sql6634008",
-    password = "R77N6kY66R",
-    database = "sql6634008"
+    user = "sql6634016",
+    password = "VNynjiRnLM",
+    database = "sql6634016"
 )
 
 app = Flask(__name__)
