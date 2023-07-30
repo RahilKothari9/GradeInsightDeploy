@@ -110,7 +110,7 @@ def addacourse():
         user_id = session["user_id"]
         # Database Entry 1. course name 2. user who created the course
         mydb.execute("CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER  NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));")
-        sql = "INSERT INTO courses(teacher_id ,course_name) VALUES (%r , %r)"%(course_name, user_id)
+        sql = "INSERT INTO courses(teacher_id ,course_name) VALUES (%r , %r)"%(user_id, course_name)
         mydb.execute(sql)
         sqliteConnection.commit()
         return redirect("/courses")
@@ -124,7 +124,7 @@ def display_courses():
     courses = mydb.fetchall()
     #print(courses)
     if courses:
-        
+        print(courses)
         return render_template("courses.html", courses=courses)
     else:
         return error("You do not have any courses(Frontend peeps add a link to addacourse page)")
@@ -136,7 +136,7 @@ def course(course_id):
     sql = "SELECT * FROM courses WHERE course_id = %r"%(val)
     mydb.execute(sql)
     courses = mydb.fetchone()
-    if courses[1] != session["user_id"]:
+    if courses[2] != session["user_id"]:
         return error("You Cannot access this page")
     return render_template("courseview.html", course_id = course_id, course_info=courses)
 @app.route("/")
@@ -170,7 +170,7 @@ def upload_file(course_id):
             file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
             # Make a db entry for the file for particular user and subject
             return redirect(url_for('upload', filename=filename))
-    return render_template('dragdrop.html', course_id=course_id)
+    return render_template('fileupload.html', course_id=course_id)
 
 @app.route('/viewmarks/<filename>')
 @login_required
