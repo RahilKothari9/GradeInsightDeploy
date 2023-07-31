@@ -106,7 +106,10 @@ def addacourse():
     else:
         if not request.form.get("name"):
             return error("Course Name not entered")
+        if not request.form.get("year"):
+            return error("Course Year not entered")
         course_name = request.form.get("name")
+        course_year = request.form.get("year")
         user_id = session["user_id"]
         # Database Entry 1. course name 2. user who created the course
         mydb.execute("CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER  NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));")
@@ -123,11 +126,8 @@ def display_courses():
     mydb.execute(sql)
     courses = mydb.fetchall()
     #print(courses)
-    if courses:
-        print(courses)
-        return render_template("addCourse.html", courses=courses)
-    else:
-        return error("You do not have any courses(Frontend peeps add a link to addacourse page)")
+    return render_template("addCourse.html", courses=courses)
+    
 @app.route("/course/<course_id>", methods = ["GET"])
 @login_required
 def course(course_id):

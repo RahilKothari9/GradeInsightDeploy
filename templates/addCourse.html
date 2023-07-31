@@ -23,7 +23,7 @@
                             <img src="/static/images/Union123.png" alt="" class="logo">
                         </div>
                         <div class="name">
-                            <h1 class="gradeinsihgt">GradeInsight</h1>
+                            <h1 class="gradeinsight">GradeInsight</h1>
                             <h2 class="slogan">Elevate Education with Personalized Communication</h2>
                         </div>
                     </div>
@@ -45,6 +45,7 @@
                 You have not added any course yet !!
             </div> 
             {%for course in courses%}
+            
             <a href="/course/{{course[0]}}">
                 <div class="courses hidden" id="courses">
                     
@@ -73,19 +74,31 @@
             
             
         </div>
+        <form method="POST" action="/addacourse">
         <div id ="addcourse_form_wrapper" class="addcourse_form_wrapper ">
-            <div class="addcourse_form">
+            <!-- <div class="addcourse_form">
                 <div class="course_name">
-                    <H3 > <input type="text" class="course_name_input" placeholder="COURSE NAME"></H3>
+                    <input type="text" class="course_name_input" placeholder="COURSE NAME" id="name" name="name">
                 </div>
                 <div class="year">
-                    <H3> <input type="text" class="year_input" placeholder="CLASS"></H3>
+                    <H3> <input type="text" class="year_input" placeholder="CLASS"></H3>    
                 </div>
                 <div class="submit">
-                       <button class="submit">SUBMIT</button>
+                       <button class="submit" type="submit">SUBMIT</button>
+                </div>
+            </div> -->
+            <div class="addcourse_form">
+                <div class="course_name">
+                    <input id="name" name="name" placeholder="Enter Course Name" type="text">
+                </div>
+                <div class="year">
+                     <input type="text" class="year_input" placeholder="CLASS" id="year" name="year">  
                 </div>
             </div>
+
+            <button type="submit">Add A Course</button>
         </div>
+        </form>
        
         
     </div>
