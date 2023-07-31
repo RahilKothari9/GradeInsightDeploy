@@ -68,7 +68,7 @@ def login():
         else:
             return error("Wrong credentials!")
     else:
-        return render_template("newlogin.html")
+        return render_template("login.html")
     
 @app.route("/register", methods = ["GET", "POST"])
 def register():
@@ -125,7 +125,7 @@ def display_courses():
     #print(courses)
     if courses:
         print(courses)
-        return render_template("courses.html", courses=courses)
+        return render_template("addCourse.html", courses=courses)
     else:
         return error("You do not have any courses(Frontend peeps add a link to addacourse page)")
 @app.route("/course/<course_id>", methods = ["GET"])

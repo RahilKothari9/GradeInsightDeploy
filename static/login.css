@@ -54,7 +54,7 @@
 }
 
 .name{
-    /* font-size: 110%; */
+   
     padding-left: 3%;
     font-family: "Inknut Antiqua";
     display: flex;
@@ -67,16 +67,14 @@
     font-size: 250%;
     font-family: "Inknut Antiqua";
     font-weight: 400;
-    /* line-height:150%; */
+    
 }
-
-
 
 .login_wrapper{
   width: 100%;
-  height: 70vh;
+  height: 71%;
   position: relative;
-  top: 50%;
+  top: 43%;
   left: 50%; 
   transform: translate(-50%,-50%);
   display: flex;
@@ -90,31 +88,44 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: rgb(245, 237, 226);
   align-items: center;
-  border: 1px solid black;
+
   
 }
 .img_login{
-    padding-top:2.5%;
+    padding-top:2%;
+    width:60%;
+    height:60%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
 }
 .username_wrapper, .password_wrapper{
-  width: 40%;
+  width: 90%;
+  padding-bottom: 6%;
   display: flex;
   align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
 .password_wrapper{
   padding-top: 2%;
 }
 .username, .password{
-  background: rgb(91, 146, 200);
+  background: white;
   height: 8vh;
   border-radius: 7px;
-  width: 150%;
+  width: 25rem;
   font-size: large;
 }
 .login_to_acc{
   font-size: 250%;
+  padding-top: 2%;
+  padding-bottom: 4%;
   font-family: 'Source Serif 4', serif;
 }
 
@@ -122,15 +133,19 @@
   cursor: pointer;
   text-decoration: underline;
 }
-
+.forget_password{
+  padding-bottom: 5%;
+}
 .sign_in{
-  width: 25%;
+  width: 70%;
   background: rgb(91, 146, 200);
   height: 8vh;
   border-radius: 7px;
   font-family: 'Source Serif 4', serif;
   cursor: pointer;
-  font-size: large;
+  font-size: xx-large;
+  margin-bottom:5%;
+  
 }
 ::placeholder{
   color: black;
@@ -141,8 +156,7 @@
 .far{
   position: absolute;
  
-  top: 50%;
-  right: 5%;  
+  right: 7%;
   cursor: pointer;
   
 }
@@ -153,4 +167,60 @@
   position: relative;
 }
 
+.form_wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  margin: 0;
+}
 
+/* Desktop PC view */
+  
+@media (min-width : 992px ) {
+   
+  .col-lg-4 {
+    width: 33.33%;
+    float: left;
+    }
+}
+
+/* Tablet PC view */
+@media (min-width: 768px) and (max-width: 991px) {
+ 
+  .col-md-6 {
+    width: 50%;
+    float: left;
+  }
+  .col-md-12 {
+    width: 100%;
+    float: left;
+  }
+}
+/* Cell phone view */
+@media (max-width: 767px)  {
+  
+  .col-sx-12 {
+    float: left;
+    width: 100%;
+  }
+  .username_wrapper, .password_wrapper{
+    width: 70%;
+  }
+  .sign_in{
+    width: 50%;
+  }
+  .login_to_acc{
+    font-size:180%;
+  }
+  .name{
+    font-size:85%;
+  }
+  .logo_img{
+    width:40%;
+    height:90%;
+  }
+}
