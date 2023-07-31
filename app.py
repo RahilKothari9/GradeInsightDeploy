@@ -170,7 +170,7 @@ def upload_file(course_id):
             file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
             # Make a db entry for the file for particular user and subject
             return redirect(url_for('upload', filename=filename))
-    return render_template('fileupload.html', course_id=course_id)
+    return render_template('upload.html', course_id=course_id)
 
 @app.route('/viewmarks/<filename>')
 @login_required
@@ -181,7 +181,7 @@ def upload(filename):
     xl = 'uploads/'+filename
     df = pd.read_excel(io = xl)
     #print(1)
-    print(df)
+    # print(df)
     return render_template('viewmarks.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 if __name__ == "__main__":
