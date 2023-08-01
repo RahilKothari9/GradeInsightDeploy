@@ -106,11 +106,14 @@ def addacourse():
     else:
         if not request.form.get("name"):
             return error("Course Name not entered")
+        if not request.form.get("year"):
+            return error("Course Year not entered")
         course_name = request.form.get("name")
+        course_year = request.form.get("year")
         user_id = session["user_id"]
         # Database Entry 1. course name 2. user who created the course
-        mydb.execute("CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER  NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));")
-        sql = "INSERT INTO courses(teacher_id ,course_name) VALUES (%r , %r)"%(user_id, course_name)
+        mydb.execute("CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER  NOT NULL,[class] NVARCHAR(250)  NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));")
+        sql = "INSERT INTO courses(teacher_id ,course_name) VALUES (%r , %r , %r)"%(user_id, course_name, course_year)
         mydb.execute(sql)
         sqliteConnection.commit()
         return redirect("/courses")
@@ -123,11 +126,8 @@ def display_courses():
     mydb.execute(sql)
     courses = mydb.fetchall()
     #print(courses)
-    if courses:
-        print(courses)
-        return render_template("addCourse.html", courses=courses)
-    else:
-        return error("You do not have any courses(Frontend peeps add a link to addacourse page)")
+    return render_template("addCourse.html", courses=courses)
+    
 @app.route("/course/<course_id>", methods = ["GET"])
 @login_required
 def course(course_id):
@@ -170,7 +170,7 @@ def upload_file(course_id):
             file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
             # Make a db entry for the file for particular user and subject
             return redirect(url_for('upload', filename=filename))
-    return render_template('fileupload.html', course_id=course_id)
+    return render_template('upload.html', course_id=course_id)
 
 @app.route('/viewmarks/<filename>')
 @login_required
@@ -181,7 +181,7 @@ def upload(filename):
     xl = 'uploads/'+filename
     df = pd.read_excel(io = xl)
     #print(1)
-    print(df)
+    # print(df)
     return render_template('viewmarks.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 if __name__ == "__main__":
