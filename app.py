@@ -188,12 +188,14 @@ def upload(filename):
     #print(df)
     return render_template('table.html',  tables=[df.to_html(classes='data')], titles=df.columns.values, course_id=filename)
 
+@app.route('/delete', methods=['POST'])
+def delete():
+    id = request.form.get("course_id")
+    
+    # HArsh delete entry where course_id = id
+    return redirect("courses")
+    print("DELETING")
+
 if __name__ == "__main__":
     app.run(debug="True")
 
-@app.route('/d', methods = ["GET", "POST"])
-@login_required
-def delete():
-    print("HI")
-    #delete entry with this course id
-    return redirect("/courses")

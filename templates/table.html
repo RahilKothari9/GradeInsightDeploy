@@ -72,7 +72,6 @@
         <thead>
             {% for table in tables %}
                 <tr>
-                    <th>{{titles[loop.index]}}</th>
                     {{ table|safe }}
                 </tr>
             {% endfor %}
@@ -123,7 +122,10 @@
     </script> -->
          </div>
         <div class="sendmail" href="//">
-            <button type="submit" id="mail" href="//">Send Mails</button>
+            <button type="submit" >
+                <img src="static/images/1015900.png" alt="" class="">
+            </button>
+            
         </div>
     </div>
    

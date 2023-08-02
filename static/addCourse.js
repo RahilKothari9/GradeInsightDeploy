@@ -142,7 +142,7 @@ document.onclick=function(event){
     console.log(container.style.flex);
     if(addCourse_wrapper_id.classList.contains('show'))
     {
-        if(!event.target.matches('.addcourse_form_wrapper') && !event.target.classList.contains("addcourse_form_wrapper") && !event.target.classList.contains("courseclick") && !event.target.matches('courseclick')){
+        if(event.target.matches('.addcourse_form_wrapper') && event.target.classList.contains("addcourse_form_wrapper") && !event.target.classList.contains("courseclick") && !event.target.matches('courseclick')){
             container.classList.remove("show");
             blur()
         }
