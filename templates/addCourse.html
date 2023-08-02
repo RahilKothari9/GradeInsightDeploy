@@ -29,7 +29,7 @@
                     </div>
                      
                     <div class="logout_img">
-                        <img src="/static/images/image 3234.png" alt="" class="logout">
+                        <a href="/logout"><img src="/static/images/image 3234.png" alt="" class="logout"></a>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,10 @@
                                 </div>
                             </div>
                             <div class="trash_wrapper">
-                            <button class="trash" id="trash">DELETE COURSE</button>
+                            <form action="/delete" method=post>
+                                <input type=hidden value={{course_id}} name="course_id">
+                                <button class="trash" id="trash" type="submit">DELETE COURSE</button>
+                            </form>
                             </div>
                         
                             
