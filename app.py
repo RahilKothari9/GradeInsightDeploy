@@ -112,8 +112,8 @@ def addacourse():
         course_year = request.form.get("year")
         user_id = session["user_id"]
         # Database Entry 1. course name 2. user who created the course
-        mydb.execute("CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER  NOT NULL,[class] NVARCHAR(250)  NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));")
-        sql = "INSERT INTO courses(teacher_id ,course_name) VALUES (%r , %r , %r)"%(user_id, course_name, course_year)
+        mydb.execute("CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER NOT NULL, [class] CHAR(250) NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));")
+        sql = "INSERT INTO courses(teacher_id ,course_name, class) VALUES (%r , %r , %r)"%(user_id, course_name, course_year)
         mydb.execute(sql)
         sqliteConnection.commit()
         return redirect("/courses")
@@ -126,7 +126,7 @@ def display_courses():
     mydb.execute(sql)
     courses = mydb.fetchall()
     #print(courses)
-    return render_template("addCourse.html", courses=courses)
+    return render_template("addCourse.html", courses=courses) 
     
 @app.route("/course/<course_id>", methods = ["GET"])
 @login_required
