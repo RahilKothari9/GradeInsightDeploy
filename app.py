@@ -138,7 +138,7 @@ def course(course_id):
     courses = mydb.fetchone()
     if courses[2] != session["user_id"]:
         return error("You Cannot access this page")
-    return render_template("courseview.html", course_id = course_id, course_info=courses)
+    return render_template("table.html", course_id = course_id, course_info=courses)
 @app.route("/")
 @login_required
 def hello_world():
@@ -182,7 +182,7 @@ def upload(filename):
     df = pd.read_excel(io = xl)
     #print(1)
     #print(df)
-    return render_template('viewmarks.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+    return render_template('table.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 if __name__ == "__main__":
     app.run(debug="True")
