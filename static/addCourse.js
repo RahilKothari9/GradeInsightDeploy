@@ -98,18 +98,7 @@ function createNewCourse(){
     const deepCopy = perCourse.cloneNode(true);
     deepCopy.classList.remove("sample_course")
     deepCopy.classList.add("course1")
-    // everyCourse.forEach(course=>{
-    //     course.addEventListener("click", (e)=>{
-    //         const souce = e.target
-    
-          
-            
-    //         souce.addEventListener("click", (event)=>{
-    //            allCourses.removeChild(deepCopy)
-    //         })
-            
-    //     })
-    // })
+
 
     trash.forEach(button =>{
         button.addEventListener("click", (e)=>{
@@ -143,27 +132,9 @@ function blur(){
 
 const newclass = document.querySelector('.newclass')
 
-//dots
-// allCourses.addEventListener("click", ()=>{
-//     console.log("hi")
-// })
-
-// perCourse.forEach(course=>{
-//     course.addEventListener("click", ()=>{
-//         console.log("hi")
-//     })
-// })
-
-// dots.forEach(dot => {
-//     dot.addEventListener('click', () => {
-//       // Your click event function code goes here
-//       console.log("You clicked on dots!");
-//       // Add any other actions you want to perform when dots are clicked
-//     });
-//   });
 
 
-document.onclick=function(){
+document.onclick=function(event){
     var container = addCourse_wrapper_id;
     console.log(event)
     console.log(event.target.matches('.addcourse_form_wrapper'));
@@ -171,7 +142,7 @@ document.onclick=function(){
     console.log(container.style.flex);
     if(addCourse_wrapper_id.classList.contains('show'))
     {
-        if(event.target.matches('.addcourse_form_wrapper') && event.target.classList.contains("addcourse_form_wrapper") && event.target.classList.contains("courseclick")){
+        if(!event.target.matches('.addcourse_form_wrapper') && !event.target.classList.contains("addcourse_form_wrapper") && !event.target.classList.contains("courseclick") && !event.target.matches('courseclick')){
             container.classList.remove("show");
             blur()
         }

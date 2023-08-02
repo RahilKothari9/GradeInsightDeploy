@@ -113,7 +113,7 @@ def addacourse():
         user_id = session["user_id"]
         # Database Entry 1. course name 2. user who created the course
         mydb.execute("CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER  NOT NULL,[class] NVARCHAR(250)  NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));")
-        sql = "INSERT INTO courses(teacher_id ,course_name) VALUES (%r , %r , %r)"%(user_id, course_name, course_year)
+        sql = "INSERT INTO courses(teacher_id ,course_name, class) VALUES (%r , %r , %r)"%(user_id, course_name, course_year)
         mydb.execute(sql)
         sqliteConnection.commit()
         return redirect("/courses")
@@ -138,7 +138,11 @@ def course(course_id):
     courses = mydb.fetchone()
     if courses[2] != session["user_id"]:
         return error("You Cannot access this page")
-    return render_template("table.html", course_id = course_id, course_info=courses)
+    path = Path("uploads/" + course_id)
+    if(not path.is_file()):
+    
+        return render_template("table.html", course_id = course_id, course_info=courses,)
+    return redirect(url_for('upload', filename=course_id))
 @app.route("/")
 @login_required
 def hello_world():
@@ -182,7 +186,14 @@ def upload(filename):
     df = pd.read_excel(io = xl)
     #print(1)
     #print(df)
-    return render_template('table.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+    return render_template('table.html',  tables=[df.to_html(classes='data')], titles=df.columns.values, course_id=filename)
 
 if __name__ == "__main__":
     app.run(debug="True")
+
+@app.route('/d', methods = ["GET", "POST"])
+@login_required
+def delete():
+    print("HI")
+    #delete entry with this course id
+    return redirect("/courses")
