@@ -1,6 +1,7 @@
 const courseClick = document.querySelector('.courseclick')
 const right_coloumn = document.querySelector('.right_coloumn')
 const addCourse_wrapper = document.querySelector('.addcourse_form_wrapper')
+const addCourse_wrapper_id = document.getElementById('addcourse_form_wrapper')
 const submit = document.querySelector('.submit')
 const allCourses = document.getElementById('courses')
 const course_name_input = document.querySelector('.course_name_input')
@@ -162,3 +163,12 @@ const newclass = document.querySelector('.newclass')
 //   });
 
 
+document.onclick=function(){
+    var container = addCourse_wrapper_id;
+    console.log(event)
+    console.log(event.target.matches('.addcourse_form_wrapper'));
+    console.log(event.target.classList.contains("addcourse_form_wrapper"))
+    console.log(container.style.flex);
+    if(addCourse_wrapper_id.classList.contains('show')){
+    if(!event.target.matches('.addcourse_form_wrapper') && !event.target.classList.contains("addcourse_form_wrapper") && !event.target.classList.contains("courseclick"))
+    container.classList.remove("show");}}

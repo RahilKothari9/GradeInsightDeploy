@@ -181,7 +181,7 @@ def upload(filename):
     xl = 'uploads/'+filename
     df = pd.read_excel(io = xl)
     #print(1)
-    # print(df)
+    #print(df)
     return render_template('viewmarks.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 if __name__ == "__main__":
