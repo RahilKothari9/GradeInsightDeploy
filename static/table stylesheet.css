@@ -161,6 +161,7 @@ a.home{
    position: fixed;
     bottom:2%;
     right:0%;
+  
   }
 
   #mail{
@@ -173,7 +174,7 @@ a.home{
     border:black solid ;
     }
     #upload{
- width:25% ;
+      width:25% ;
       height:7% ;
       margin-top:5% ;
       margin-left:6% ;
