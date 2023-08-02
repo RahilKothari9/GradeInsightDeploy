@@ -40,16 +40,27 @@
             <div class="addcoursebutton">
                 <button type="submit" id="addcourse_btn" class="courseclick">Add a course</button>
             </div>
+            {% if courses|length == 0%}
+                <div class="middle">
+                    You have not added any course yet !!
+                </div> 
+            {% else %}
             
-            <div class="middle">
-                You have not added any course yet !!
-            </div> 
-            {%for course in courses%}
+                <div class="middle hidden">
+                    You have not added any course yet !!
+                </div> 
             
-            <a href="/course/{{course[0]}}">
-                <div class="courses hidden" id="courses">
+            {%endif%}
+
+            
+            
+            
+                <div class="courses" id="courses">
                     
-                        <div class="course1 sample_course" id="course1">
+                        <!-- removed sample-course -->
+                        {%for course in courses%}
+                        <a href="/course/{{course[0]}}">
+                        <div class="course1 " id="course1">
                             <div class="dots">
                                 <li></li>
                                 <li></li>
@@ -67,10 +78,13 @@
                         
                             
                         </div>
+                    </a>
+                        {%endfor%}
                     
                 </div>
-            </a>
-            {%endfor%}
+            
+            
+            
             
             
         </div>
@@ -96,7 +110,7 @@
                 </div>
             </div>
 
-            <button type="submit">Add A Course</button>
+            <button type="submit" class="submit">Add A Course</button>
         </div>
         </form>
        

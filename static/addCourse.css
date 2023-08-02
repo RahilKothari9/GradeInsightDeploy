@@ -206,7 +206,7 @@ button{
     
     
     height: 12em;
-    background-color: blue;
+    background-color: rgba(80, 105, 193, 1);
     border-radius: 1em;
     position: relative;
     

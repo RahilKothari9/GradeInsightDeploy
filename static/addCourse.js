@@ -169,6 +169,12 @@ document.onclick=function(){
     console.log(event.target.matches('.addcourse_form_wrapper'));
     console.log(event.target.classList.contains("addcourse_form_wrapper"))
     console.log(container.style.flex);
-    if(addCourse_wrapper_id.classList.contains('show')){
-    if(!event.target.matches('.addcourse_form_wrapper') && !event.target.classList.contains("addcourse_form_wrapper") && !event.target.classList.contains("courseclick"))
-    container.classList.remove("show");}}
+    if(addCourse_wrapper_id.classList.contains('show'))
+    {
+        if(event.target.matches('.addcourse_form_wrapper') && event.target.classList.contains("addcourse_form_wrapper") && event.target.classList.contains("courseclick")){
+            container.classList.remove("show");
+            blur()
+        }
+        
+    }   
+}
