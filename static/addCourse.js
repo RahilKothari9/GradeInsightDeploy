@@ -15,6 +15,7 @@ const one_course = document.querySelectorAll('.course1')
 const everyCourse = document.querySelectorAll('.courses')
 let count = 0
 const trash = document.querySelectorAll('.trash')
+const cross = document.querySelector('.cross')
 Number(count)
 
 
@@ -134,18 +135,25 @@ const newclass = document.querySelector('.newclass')
 
 
 
-document.onclick=function(event){
-    var container = addCourse_wrapper_id;
-    console.log(event)
-    console.log(event.target.matches('.addcourse_form_wrapper'));
-    console.log(event.target.classList.contains("addcourse_form_wrapper"))
-    console.log(container.style.flex);
-    if(addCourse_wrapper_id.classList.contains('show'))
-    {
-        if(event.target.matches('.addcourse_form_wrapper') && !event.target.classList.contains("addcourse_form_wrapper") && event.target.classList.contains("courseclick") && event.target.matches('courseclick')){
-            container.classList.remove("show");
-            blur()
-        }
+// document.onclick=function(event){
+//     var container = addCourse_wrapper_id;
+//     console.log(event)
+//     console.log(event.target.matches('.addcourse_form_wrapper'));
+//     console.log(event.target.classList.contains("addcourse_form_wrapper"))
+//     console.log(container.style.flex);
+//     if(addCourse_wrapper_id.classList.contains('show'))
+//     {
+//         if(event.target.matches('.addcourse_form_wrapper') && !event.target.classList.contains("addcourse_form_wrapper") && event.target.classList.contains("courseclick") && event.target.matches('courseclick')){
+//             container.classList.remove("show");
+//             blur()
+//         }
         
-    }   
-}
+//     }   
+// }
+
+
+
+cross.addEventListener("click", ()=>{
+    addCourse_wrapper_id.classList.remove("show");
+    blur()
+})
