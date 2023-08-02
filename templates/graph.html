@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeInsight-Table Form</title>
+    <link rel="stylesheet" href="/static/table stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="full_body"  class="col-lg-4 col-md-6 sx-12">
+        <div class="left_coloumn" >
+
+        </div>
+        <div class="right_coloumn " >
+            <div class="header_wrapper">
+                <div class="header">
+                    <div class="logo_wrapper">
+                        <div class="logo_img">
+                            <img src="/static/images/Union123.png" alt="" class="logo">
+                        </div>
+                        <div class="name">
+                            <h1 class="gradeinsihgt">GradeInsight</h1>
+                            <h2 class="slogan">Elevate Education with Personalized Communication</h2>
+                        </div>
+                    </div>
+                     
+                    <div class="logout_img">
+                        <a href="/logout"><img src="/static/images/image 3234.png" alt="" class="logout"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <a class="home" href="addCourse.html">Home</a>
+                <a class="tableform" href="//">Table Form</a>
+                <a class="graph" href="//">Graph form</a>
+            </div>
+            
+           <div style="height: 65vh; width: 90%;">
+               <canvas id="myChart"></canvas>
+           </div>
+    
+            <script>
+                const labels = {{ labels | tojson}};
+        
+                const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Sales',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: {{ data | tojson}},
+                    }]
+                };
+        
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: { maintainAspectRatio: false }
+                };
+        
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+        
+            </script>
+        </div>      
+        
+    </div>
+   
+</body>
+</html>

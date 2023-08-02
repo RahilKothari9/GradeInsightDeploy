@@ -1,0 +1,7 @@
+openpyxl
+pandas
+Flask
+os
+sqlalchemy
+mysql.connector
+flask_session

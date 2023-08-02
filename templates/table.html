@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeInsight-Table Form</title>
+    <link rel="stylesheet" href="/static/table stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="full_body"  class="col-lg-4 col-md-6 sx-12">
+        <div class="left_coloumn" >
+
+        </div>
+        <div class="right_coloumn " >
+            <div class="header_wrapper">
+                <div class="header">
+                    <div class="logo_wrapper">
+                        <div class="logo_img">
+                            <img src="/static/images/Union123.png" alt="" class="logo">
+                        </div>
+                        <div class="name">
+                            <h1 class="gradeinsihgt">GradeInsight</h1>
+                            <h2 class="slogan">Elevate Education with Personalized Communication</h2>
+                        </div>
+                    </div>
+                     
+                    <div class="logout_img">
+                        <a href="/logout"><img src="/static/images/image 3234.png" alt="" class="logout"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav">
+                <a class="home" href="/courses" >Home</a>
+                <a class="tableform" href="/viewmarks/{{course_id}}" >Table Form</a>
+                <a class="graph"  >Graph Form</a>
+            </div>
+            <div class="upload">
+               <a href="/fileupload/{{course_id}}">
+                    <button type="submit" id="upload">Upload  a  File</button>
+               </a>
+            </div>
+
+            <!-- <div class="table" href="//"></div> -->
+            <!-- <h1>Sample Data Table</h1> -->
+            
+                
+                
+            
+            
+    <table id="data-table">
+        
+        <thead>
+            {% for table in tables %}
+                <tr>
+                    {{ table|safe }}
+                </tr>
+            {% endfor %}
+        </thead>
+        <tbody>
+        </tbody>
+
+        <!-- {% for data in sample_data %} -->
+        <!-- <p>
+            {{data}}
+        </p>
+        {% endfor %}
+        <p>
+
+        </p> -->
+    </table>
+    
+
+    <!-- <script>
+    
+       
+
+        function createTableRows() {
+            var tableBody = document.querySelector("#data-table tbody");
+            tableBody.innerHTML = "";
+
+            sampleData.forEach(function(person) {
+                var row = document.createElement("tr");
+
+                var nameCell = document.createElement("td");
+                nameCell.textContent = person.name;
+                row.appendChild(nameCell);
+
+                var ageCell = document.createElement("td");
+                ageCell.textContent = person.age;
+                row.appendChild(ageCell);
+
+                var occupationCell = document.createElement("td");
+                occupationCell.textContent = person.occupation;
+                row.appendChild(occupationCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+
+       
+        createTableRows();
+    </script> -->
+         </div>
+        <div class="sendmail" href="//">
+            <button type="submit" id="mail" href="//">Send Mails</button>
+            
+        </div>
+    </div>
+   
+</body>
+</html>

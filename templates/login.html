@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="\static\login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script defer src="\static\login.js"></script>
+</head>
+<body>
+    <div class="full_body"  class="col-lg-4 col-md-6 sx-12">
+        <div class="left_coloumn" >
+
+        </div>
+        <div class="right_coloumn " >
+            <div class="logo_wrapper">
+                <div class="logo_img">
+                    <img src="\static\images\Union123.png" alt="" class="logo">
+                </div>
+                <div class="name">
+                    <h1 class="gradeinsihgt">GradeInsight</h1>
+                    <h2 class="slogan">Elevate Education with Personalized Communication</h2>
+                </div>
+            </div>
+            <div class="login_wrapper">
+                <div class="login">
+                    <div class="img_login">
+                        <img src="\static\images\🦆 icon _user_loginlogo.png" alt="" class="login_img">
+                    </div>
+                    <div class="login_to_acc">Login to your account!</div>
+                    <form method="POST" action="/login">
+                    <div class="form_wrapper">
+                        <div class="username_wrapper">
+                            <input type="text" class="username" id="email" name="email" placeholder="EMAIL ID">
+                        </div>
+                        <div class="password_wrapper">
+                            <input type="password" class="password" id="password" name="password" placeholder="PASSWORD">
+                            <i class="far fa-eye" id="togglePassword"></i>
+                        </div>
+                        <div class="forget_password">
+                            Forgot password?
+                        </div>
+                        <button class="sign_in">LOGIN</button>
+                    </div>
+                    
+                    </form>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+   
+</body>
+</html>
