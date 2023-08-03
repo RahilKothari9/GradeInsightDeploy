@@ -82,45 +82,37 @@
 }
 
 .name{
-    /* font-size: 110%; */
+    
     padding-left: 3%;
     font-family: "Inknut Antiqua";
     display: flex;
     flex-direction: column;
-    height: 10vh;
+    
     justify-content: center;
    
 }
-.gradeinsihgt{
-    font-size: max(250%);
+.gradeinsight{
+    font-size: max(4.5vw, 3px);
     font-family: "Inknut Antiqua";
-    font-weight: 400;
-    /* line-height:150%; */
+    font-weight: 200;
+     
+}
+.slogan{
+    
+    font-weight: 200;
+    display: flex;
+    flex-shrink: 0;
 }
 
 
-/* .add_course{
-    position: relative;
-    top: 5%;
-    left: 50%; 
-    transform: translate(-50%,-50%);  
-    display: flex;
-    flex-direction: row;
-    padding-top:7%;
-    justify-content: space-around;
-    padding-left: 2%;
-    align-content: center;
-    justify-items: center;
-    align-items: center;
-} */
 button{
     border-radius:2rem ;
     font-weight: bold;
-    width: 15rem ;
-    height: 5rem;
-    
+    /* width: 15rem ;
+    height: 5rem; */
+    flex-shrink: 0;
     background-color:whitesmoke;
-    font-size:1.8em ;
+    
     padding-left: 1%;
     padding-right: 1%;
     box-shadow:2px 2px;
@@ -163,26 +155,7 @@ button{
   }
   
   /* Tablet PC view */
-  @media (min-width: 768px) and (max-width: 991px) {
-   
-    .col-md-6 {
-      width: 50%;
-      float: left;
-    }
-    .col-md-12 {
-      width: 100%;
-      float: left;
-    }
-  }
-  /* Cell phone view */
-  @media (max-width: 767px)  {
-    
-    .col-sx-12 {
-      float: left;
-      width: 100%;
-    }
-    
-  }
+ 
 
 
 
@@ -193,7 +166,7 @@ button{
     
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
-    gap: 3%; 
+    gap: 5%; 
     
      
 }
@@ -203,7 +176,12 @@ button{
 }
 
 .course1{
+    display: flex;
+    flex-direction: column;
     
+    align-content: center;
+ 
+    align-items: center;
     
     height: 12em;
     background-color: rgba(80, 105, 193, 1);
@@ -313,6 +291,16 @@ button{
     align-content: center;
     
 }
+.wrapper{
+    padding-top: 3em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+}
 .course_name, .year{
     
     
@@ -333,13 +321,13 @@ input{
     font-weight: bold;
     text-anchor: middle;
     
-    width: 30%;
+    width: 130%;
 }
-.submit{
-    height: 5vh;
-    width: 60%;
+.courseclick{
+    height: 5vmax;
+    width: 30%;
     cursor: pointer;
-    font-size: 1em;
+    font-size: max(2.5vw, 1px);
     font-weight: bolder;
     display: flex;
     flex-direction: row;
@@ -347,8 +335,13 @@ input{
     align-items: center;
     justify-items: center;
     
-    align-content: center;
     
+    
+}
+.submit{
+    height: 4vmax;
+    width: 40%;
+    font-size: max(1.5vw, 1px);
 }
 
 .show{
@@ -398,9 +391,7 @@ input{
 }
 
 
-h3{
-    width: 150%;
-}
+
 
 .course_name, .year{
     width: 80%;
@@ -416,14 +407,88 @@ h3{
     font-size: small;
 
 }
-
+form{
+    display: flex;
+    align-content: center; 
+   align-items: center;
+   justify-content: center;
+}
 .trash_wrapper{
     position: absolute;
     bottom: 2em;
     width: 100%;
     display: flex;
-    /* align-content: center; */
+     align-content: center; 
     align-items: center;
     justify-content: center;
     
 }
+
+.cross{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: xx-large;
+    cursor: pointer;
+    color: white;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+   
+    .col-md-6 {
+      width: 50%;
+      float: left;
+    }
+    .col-md-12 {
+      width: 100%;
+      float: left;
+    }
+    .courses{
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important; 
+    }
+  }
+  /* Cell phone view */
+  @media (max-width: 767px)  {
+    
+    .col-sx-12 {
+      float: left;
+      width: 100%;
+    }
+
+
+    .courses{
+        display: flex !important;
+        flex-direction:  column ;
+        align-content: center;
+        justify-content: space-between;
+        padding-bottom: 10em  !important;
+        padding-left: 2em !important;
+        width: 85% !important;
+        gap: 2em !important;
+    }
+    .logo_img{
+        
+        max-height: 8vh;
+    }
+    .slogan{
+        font-size: x-small;
+    }
+    .gradeinsight{
+        font-weight: bolder;
+    }
+
+    input{
+        font-size: x-small;
+    }
+    .show{
+        width: 60%;
+        height: 40vmax;
+    }
+}
+
+::placeholder{
+    font-size: large;
+}
+
