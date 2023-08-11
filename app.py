@@ -191,7 +191,7 @@ def upload(filename):
 @app.route('/delete', methods=['POST'])
 def delete():
     id = request.form.get("course_id")
-    
+    print(id)
     # HArsh delete entry where course_id = id
     return redirect("courses")
     print("DELETING")

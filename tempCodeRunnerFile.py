@@ -1,1 +1,2 @@
-CREATE TABLE if not exists [courses] ([course_id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,[course_name] NVARCHAR(250)  NOT NULL,[teacher_id] INTEGER  NOT NULL,FOREIGN KEY(teacher_id) REFERENCES teacher_entry(teacher_id));
+column_list = [column[x].value for x in range(len(column))]
+print(column_list)
