@@ -192,11 +192,12 @@ def upload(filename):
 @app.route('/delete', methods=['POST'])
 def delete():
     id = request.form.get("course_id")
-    print("Helli",id)
+    print(id)
     # HArsh delete entry where course_id = id
     val = (id)
     sql = "DELETE FROM courses WHERE course_id = %r"%(val)
     mydb.execute(sql)
+    sqliteConnection.commit()
     return redirect("courses")
     print("DELETING")
 

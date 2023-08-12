@@ -24,7 +24,7 @@
                         </div>
                         <div class="name">
                             <h1 class="gradeinsight">GradeInsight</h1>
-                            <h2 class="slogan">Elevate Education with Personalized Communication</h2>
+                            <h3 class="slogan">Elevate Education with Personalized Communication</h3>
                         </div>
                     </div>
                      
@@ -61,11 +61,7 @@
                         {%for course in courses%}
                         <a href="/course/{{course[0]}}">
                         <div class="course1 " id="course1">
-                            <div class="dots">
-                                <li></li>
-                                <li></li>
-                                <li></li>
-                            </div>
+                            
                             <div class="text_context_wrapper">
                                 <div class="text_content">
                                     <h4 class="course_name_output"> {{ course[1] }}</h4><br>
@@ -74,7 +70,7 @@
                             </div>
                             <div class="trash_wrapper">
                             <form action="/delete" method=post>
-                                <input type=hidden value={{course_id}} name="course_id">
+                                <input type=hidden value={{course[0]}} name="course_id">
                                 <button class="trash" id="trash" type="submit">DELETE COURSE</button>
                             </form>
                             </div>
@@ -93,26 +89,21 @@
         </div>
         <form method="POST" action="/addacourse">
         <div id ="addcourse_form_wrapper" class="addcourse_form_wrapper ">
-            <!-- <div class="addcourse_form">
-                <div class="course_name">
-                    <input type="text" class="course_name_input" placeholder="COURSE NAME" id="name" name="name">
+            
+            <div class="wrapper">
+                <div class="addcourse_form">
+                    <div class="cross">X</div>
+                    <div class="course_name">
+                        <input id="name" name="name" placeholder="COURSE NAME" type="text">
+                    </div>
+                    <div class="year">
+                         <input type="text" class="year_input" placeholder="CLASS" id="year" name="year">  
+                    </div>
+                    
                 </div>
-                <div class="year">
-                    <H3> <input type="text" class="year_input" placeholder="CLASS"></H3>    
-                </div>
-                <div class="submit">
-                       <button class="submit" type="submit">SUBMIT</button>
-                </div>
-            </div> -->
-            <div class="addcourse_form">
-                <div class="course_name">
-                    <input id="name" name="name" placeholder="Enter Course Name" type="text">
-                </div>
-                <div class="year">
-                     <input type="text" class="year_input" placeholder="CLASS" id="year" name="year">  
-                </div>
+    
             </div>
-
+           
             <button type="submit" class="submit">Add A Course</button>
         </div>
         </form>
