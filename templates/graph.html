@@ -38,18 +38,34 @@
                 <a class="tableform" href="/viewmarks/{{course_id}}">Table Form</a>
                 <a class="graph" href="//">Graph form</a>
             </div>
+            <div class="Radiobutton">
+                <div class="ise">
+                <input type="radio" name="test" value="value1"> 
+                    ISE
+                </div>
+                <div class="ese">
+                <input type="radio" name="test" value="value2"> 
+                    ESE
+                </div>
+                <div class="total">
+                <input type="radio" name="test" value="value3"> 
+                    Total Marks
+                </div>
+            </div>
             
            <div style="height: 65vh; width: 90%;">
-               <canvas id="myChart"></canvas>
+               <canvas id="total"></canvas>
            </div>
-    
+          
+     
+ 
             <script>
                 const labels = {{ labels | tojson}};
         
                 const data = {
                     labels: labels,
                     datasets: [{
-                        label: 'MARKS',
+                        label: 'NO. OF STUDENTS',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(0,0,0)',
                         data: {{ data | tojson}},
@@ -63,7 +79,7 @@
                 };
         
                 const myChart = new Chart(
-                    document.getElementById('myChart'),
+                    document.getElementById('total'),
                     config
                 );
         

@@ -493,7 +493,4 @@ form{
 }
 
 
-canvas{
-    display: grid;
-       place-items: center;
-}
+
