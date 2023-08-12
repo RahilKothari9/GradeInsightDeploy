@@ -492,3 +492,8 @@ form{
     font-size: large;
 }
 
+
+canvas{
+    display: grid;
+       place-items: center;
+}
