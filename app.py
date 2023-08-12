@@ -117,6 +117,7 @@ def addacourse():
         mydb.execute(sql)
         sqliteConnection.commit()
         return redirect("/courses")
+
 @app.route("/courses")
 @login_required
 def display_courses():
@@ -193,6 +194,10 @@ def delete():
     id = request.form.get("course_id")
     print(id)
     # HArsh delete entry where course_id = id
+    val = (id)
+    sql = "DELETE FROM courses WHERE course_id = %r"%(val)
+    mydb.execute(sql)
+    sqliteConnection.commit()
     return redirect("courses")
     print("DELETING")
 
