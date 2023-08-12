@@ -8,6 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import mysql.connector
 from pathlib import Path
 import sqlite3
+import math
 
 
 sqliteConnection = sqlite3.connect('GradeInsight.db', check_same_thread=False)
@@ -176,6 +177,32 @@ def upload_file(course_id):
             # Make a db entry for the file for particular user and subject
             return redirect(url_for('upload', filename=filename))
     return render_template('upload.html', course_id=course_id)
+
+@app.route('/graph/<course_id>', methods=['GET'])
+@login_required
+def graph(course_id):
+    xl = 'uploads/'+ course_id
+    df = pd.read_excel(io = xl) # can also index sheet by name or fetch all sheets
+    name = df['NAME'].tolist()
+    somaiyaid = df['SOMAIYA_ID'].tolist()
+    rollno = df['ROLLNO'].tolist()
+    ia1 = df['IA1'].tolist()
+    ia2 = df['IA2'].tolist()
+    ia = df['IA'].tolist()
+    ise = df['ISE'].tolist()
+    ese = df['ESE'].tolist()
+    ca = df['CA'].tolist()
+    tot = df['TOTAL'].tolist()
+    labels = ["0-10", "10-20", "20-30","30-40","40-50","50-60","60-70","70-80","80-90","90-100"]
+    data = [0,0,0,0,0,0,0,0,0,0]
+
+    for marks in tot:
+        r = int(marks/10)
+        
+        data[r] += 1
+    print(tot)
+    #return redirect("/courses")
+    return render_template('graph.html', course_id=course_id, labels=labels, data=data)
 
 @app.route('/viewmarks/<filename>')
 @login_required
