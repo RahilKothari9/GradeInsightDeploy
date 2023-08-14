@@ -194,7 +194,10 @@ def graph(course_id):
     ca = df['CA'].tolist()
     tot = df['TOTAL'].tolist()
     labels = ["0-10", "10-20", "20-30","30-40","40-50","50-60","60-70","70-80","80-90","90-100"]
+    labels2 = ["0-5", "5-10", "10-15", "15-20", "20-25", "25-30"]
     data = [0,0,0,0,0,0,0,0,0,0]
+    data1 = [0,0,0,0,0,0,0,0,0,0]
+    data2 = [0,0,0,0,0,0,0,0,0,0]
 
     for marks in tot:
         r = int(marks/10)
@@ -202,7 +205,26 @@ def graph(course_id):
         data[r] += 1
     print(tot)
     #return redirect("/courses")
+    for marks in ese:
+        r = int(marks/10)
+        
+        data1[r] += 1
+    print(ese)
+
+    for marks in ise:
+        r = int(marks/10)
+
+        data2[r] += 1
+        print(ise)
+
+        if request.form.get("ese"):
+            return render_template('graph.html', course_id=course_id, labels=labels, data=data1)
+        if request.form.get("ise"):
+            return render_template('graph.html', course_id=course_id, labels=labels2, data=data2)
+        if request.form.get("total_marks"):
+            return render_template('graph.html', course_id=course_id, labels=labels, data=data)
     return render_template('graph.html', course_id=course_id, labels=labels, data=data)
+
 
 @app.route('/viewmarks/<filename>')
 @login_required
