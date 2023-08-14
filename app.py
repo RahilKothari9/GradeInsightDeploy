@@ -208,19 +208,19 @@ def graph(course_id):
         r = int(marks/10)
         
         data[r] += 1
-    print(tot)
+    #print(tot)
     #return redirect("/courses")
     for marks in ese:
         r = int(marks/10)
         
         data1[r] += 1
-    print(ese)
+    #print(ese)
 
     for marks in ise:
         r = int(marks/10)
 
         data2[r] += 1
-        print(ise)
+        #print(ise)
 
         if request.form.get("ese"):
             return render_template('graph.html', course_id=course_id, labels=labels, data=data1)
@@ -268,7 +268,7 @@ def sendmail(courseid):
 
         # Set the subject and body of the email
         subject = 'Marks Recieved'
-        body = f"ISE: {ise[i]} \n IA1: {ia1[i]} \n IA2: {ia2[i]} \n IA: {ia[i]} CA: {ca[i]}\n ESE: {ese[i]}\n TOT = {tot[i]}"
+        body = f"ISE: {ise[i]} \n IA1: {ia1[i]} \n IA2: {ia2[i]} \n IA: {ia[i]} \nCA: {ca[i]}\n ESE: {ese[i]}\n TOT = {tot[i]}"
 
         em = EmailMessage()
         em['From'] = email_sender
@@ -291,16 +291,16 @@ def sendmail(courseid):
 @app.route('/delete', methods=['POST'])
 def delete():
     id = request.form.get("course_id")
-    print(id)
+    #print(id)
     # HArsh delete entry where course_id = id
     val = (id)
     sql = "DELETE FROM courses WHERE course_id = %r"%(val)
     mydb.execute(sql)
     sqliteConnection.commit()
     return redirect("courses")
-    print("DELETING")
+    #print("DELETING")
 
 if __name__ == "__main__":
-    print(os.getenv('TEST'))
+    #print(os.getenv('TEST'))
     app.run(debug="True")
 

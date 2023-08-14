@@ -138,6 +138,7 @@
     background-color: #5069C1;
     font-size:1.5em ;
     border:black solid ;
+    cursor: pointer;
     }
     #upload{
       width:25% ;
