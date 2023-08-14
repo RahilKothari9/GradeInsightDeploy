@@ -52,9 +52,9 @@
                 </div>
             </div>
             <div class="nav">
-                <a class="home" href="/courses" >Home</a>
-                <a class="tableform" href="/viewmarks/{{course_id}}" >Table Form</a>
-                <a class="graph" href="/graph/{{course_id}}" >Graph Form</a>
+                <a class="home" href="/courses" style="text-decoration: none; color: black;">Home</a>
+                <a class="tableform" href="/viewmarks/{{course_id}}" style="text-decoration: none; color: black;" >Table Form</a>
+                <a class="graph" href="/graph/{{course_id}}" style="text-decoration: none; color: black;">Graph Form</a>
             </div>
             <div class="upload">
                <a href="/fileupload/{{course_id}}">
@@ -62,72 +62,41 @@
                </a>
             </div>
 
-            <!-- <div class="table" href="//"></div> -->
-            <!-- <h1>Sample Data Table</h1> -->
+            
             
                 
                 
+        <div class="tablesss">
+            <table id="data-table" >
             
+                <thead>
+                    {% for table in tables %}
+                        <tr>
+                            {{ table|safe }}
+                        </tr>
+                    {% endfor %}
+                </thead>
+                <!-- <tbody>
+                </tbody> -->
+    
+              
+            </table>
+        </div>
             
-    <table id="data-table">
         
-        <thead>
-            {% for table in tables %}
-                <tr>
-                    {{ table|safe }}
-                </tr>
-            {% endfor %}
-        </thead>
-        <tbody>
-        </tbody>
-
-        <!-- {% for data in sample_data %} -->
-        <!-- <p>
-            {{data}}
-        </p>
-        {% endfor %}
-        <p>
-
-        </p> -->
-    </table>
-    
-
-    <!-- <script>
+        
+    </div>
+   
     
        
 
-        function createTableRows() {
-            var tableBody = document.querySelector("#data-table tbody");
-            tableBody.innerHTML = "";
-
-            sampleData.forEach(function(person) {
-                var row = document.createElement("tr");
-
-                var nameCell = document.createElement("td");
-                nameCell.textContent = person.name;
-                row.appendChild(nameCell);
-
-                var ageCell = document.createElement("td");
-                ageCell.textContent = person.age;
-                row.appendChild(ageCell);
-
-                var occupationCell = document.createElement("td");
-                occupationCell.textContent = person.occupation;
-                row.appendChild(occupationCell);
-
-                tableBody.appendChild(row);
-            });
-        }
-
        
-        createTableRows();
-    </script> -->
-         </div>
+        
         <div class="sendmail" href="//">
             <button type="submit" id="mail" href="//">Send Mails</button>
             
         </div>
-    </div>
+    
    
 </body>
 </html>
