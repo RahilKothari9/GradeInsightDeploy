@@ -9,6 +9,8 @@ import mysql.connector
 from pathlib import Path
 import sqlite3
 import math
+from dotenv import load_dotenv
+load_dotenv()
 
 
 sqliteConnection = sqlite3.connect('GradeInsight.db', check_same_thread=False)
@@ -251,5 +253,6 @@ def delete():
     print("DELETING")
 
 if __name__ == "__main__":
+    print(os.getenv('TEST'))
     app.run(debug="True")
 
