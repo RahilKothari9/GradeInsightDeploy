@@ -123,14 +123,15 @@
     }
   .sendmail{
    
-   position: fixed;
+    position: fixed;
     bottom:2%;
-    right:0%;
+    right:0.6%;
+    
   
   }
 
-  #mail{
-    border-radius:10% ;
+    #mail{
+    border-radius:0.5em ;
     font-weight: bold;
     width: 100% ;
     height:30% ;

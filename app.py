@@ -9,6 +9,11 @@ import mysql.connector
 from pathlib import Path
 import sqlite3
 import math
+from dotenv import load_dotenv
+import smtplib
+import ssl
+from email.message import EmailMessage
+load_dotenv()
 
 
 sqliteConnection = sqlite3.connect('GradeInsight.db', check_same_thread=False)
@@ -238,6 +243,51 @@ def upload(filename):
     #print(df)
     return render_template('table.html',  tables=[df.to_html(classes='data')], titles=df.columns.values, course_id=filename)
 
+@app.route('/sendmail/<courseid>')
+@login_required
+def sendmail(courseid):
+    path = Path("uploads/" + courseid)
+
+    xl = 'uploads/'+courseid
+    df = pd.read_excel(io = xl)
+    name = df['NAME'].tolist()
+    somaiyaid = df['SOMAIYA_ID'].tolist()
+    rollno = df['ROLLNO'].tolist()
+    ia1 = df['IA1'].tolist()
+    ia2 = df['IA2'].tolist()
+    ia = df['IA'].tolist()
+    ise = df['ISE'].tolist()
+    ese = df['ESE'].tolist()
+    ca = df['CA'].tolist()
+    tot = df['TOTAL'].tolist()
+    email_sender = 'grade.insight1@gmail.com'
+    email_password = ''
+    
+    for i in range(len(name)):
+        email_receiver = somaiyaid[i]
+
+        # Set the subject and body of the email
+        subject = 'Marks Recieved'
+        body = f"ISE: {ise[i]} \n IA1: {ia1[i]} \n IA2: {ia2[i]} \n IA: {ia[i]} CA: {ca[i]}\n ESE: {ese[i]}\n TOT = {tot[i]}"
+
+        em = EmailMessage()
+        em['From'] = email_sender
+        em['To'] = email_receiver
+        em['Subject'] = subject
+        em.set_content(body)
+
+        # Add SSL (layer of security)
+        context = ssl.create_default_context()
+
+        # Log in and send the email
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+            smtp.login(email_sender, email_password)
+            smtp.sendmail(email_sender, email_receiver, em.as_string())
+    return redirect("/course/" + courseid)
+
+
+
+
 @app.route('/delete', methods=['POST'])
 def delete():
     id = request.form.get("course_id")
@@ -251,5 +301,6 @@ def delete():
     print("DELETING")
 
 if __name__ == "__main__":
+    print(os.getenv('TEST'))
     app.run(debug="True")
 
