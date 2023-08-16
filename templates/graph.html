@@ -91,30 +91,61 @@
                 );
 
 
-                //chart2
-                // const labels_ise = {{ labels | tojson}};
+                // //chart2
+                
         
-                // const data2 = {
-                //     labels_ise: labels,
-                //     datasets: [{
-                //         label: 'NO. OF STUDENTS',
-                //         backgroundColor: 'rgb(255, 99, 132)',
-                //         borderColor: 'rgb(0,0,0)',
-                //         data2: {{ data | tojson}},
-                //     }]
-                // };
+            </script>
+            <script>
+                const labelsise = {{ labels_ise | tojson}};
         
-                // const config = {
-                //     type: 'bar',
-                //     data: data2,
-                //     options: { maintainAspectRatio: false }
-                // };
+                const dataise = {
+                    labels: labelsise,
+                    datasets: [{
+                        label: 'NO. OF STUDENTS',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(0,0,0)',
+                        data: {{ data_ise | tojson}},
+                    }]
+                };
         
-                // const myChart2 = new Chart(
-                //     document.getElementById('ise'),
-                //     config
-                // );
+                const config1 = {
+                    type: 'bar',
+                    data: dataise,
+                    options: { maintainAspectRatio: false }
+                };
         
+                const myChart1 = new Chart(
+                    document.getElementById('ise'),
+                    config1
+                );
+            </script>
+
+
+
+            <!-- ese chart -->
+            <script>
+                const labelsese = {{ labels_ese | tojson}};
+        
+                const dataese = {
+                    labels: labelsese,
+                    datasets: [{
+                        label: 'NO. OF STUDENTS',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(0,0,0)',
+                        data: {{ data_ese | tojson}},
+                    }]
+                };
+        
+                const config2 = {
+                    type: 'bar',
+                    data: dataese,
+                    options: { maintainAspectRatio: false }
+                };
+        
+                const myChart2 = new Chart(
+                    document.getElementById('ese'),
+                    config2
+                );
             </script>
         </div>      
         

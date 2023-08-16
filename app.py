@@ -200,6 +200,7 @@ def graph(course_id):
     tot = df['TOTAL'].tolist()
     labels = ["0-10", "10-20", "20-30","30-40","40-50","50-60","60-70","70-80","80-90","90-100"]
     labels2 = ["0-5", "5-10", "10-15", "15-20", "20-25", "25-30"]
+    labels3 = ["0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35", "35-40", "40-45", "45-50"]
     data = [0,0,0,0,0,0,0,0,0,0]
     data1 = [0,0,0,0,0,0,0,0,0,0]
     data2 = [0,0,0,0,0,0,0,0,0,0]
@@ -211,13 +212,13 @@ def graph(course_id):
     #print(tot)
     #return redirect("/courses")
     for marks in ese:
-        r = int(marks/10)
+        r = int(marks/5)
         
         data1[r] += 1
     #print(ese)
 
     for marks in ise:
-        r = int(marks/10)
+        r = int(marks/5)
 
         data2[r] += 1
         #print(ise)
@@ -228,9 +229,8 @@ def graph(course_id):
         #     return render_template('graph.html', course_id=course_id, labels=labels2, data=data2)
         # if request.form.get("total_marks"):
         #     return render_template('graph.html', course_id=course_id, labels=labels, data=data)
-    return render_template('graph.html', course_id=course_id, labels=labels, data=data)
-    return render_template('graph.html', course_id=course_id, labels_ise=labels2, data=data2)
-    return render_template('graph.html', course_id=course_id, labels=labels2, data=data1)
+    return render_template('graph.html', course_id=course_id, labels=labels, data=data, labels_ise=labels2, data_ise=data2, labels_ese=labels3, data_ese=data1)
+
 
 
 @app.route('/viewmarks/<filename>')
