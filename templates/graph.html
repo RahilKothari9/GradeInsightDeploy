@@ -57,6 +57,12 @@
            <div style="height: 65vh; width: 90%;">
                <canvas id="total"></canvas>
            </div>
+           <div style="height: 65vh; width: 90%;">
+                <canvas id="ise"></canvas>
+            </div>
+            <div style="height: 65vh; width: 90%;">
+                <canvas id="ese"></canvas>
+            </div>
           
      
  
@@ -83,6 +89,31 @@
                     document.getElementById('total'),
                     config
                 );
+
+
+                //chart2
+                // const labels_ise = {{ labels | tojson}};
+        
+                // const data2 = {
+                //     labels_ise: labels,
+                //     datasets: [{
+                //         label: 'NO. OF STUDENTS',
+                //         backgroundColor: 'rgb(255, 99, 132)',
+                //         borderColor: 'rgb(0,0,0)',
+                //         data2: {{ data | tojson}},
+                //     }]
+                // };
+        
+                // const config = {
+                //     type: 'bar',
+                //     data: data2,
+                //     options: { maintainAspectRatio: false }
+                // };
+        
+                // const myChart2 = new Chart(
+                //     document.getElementById('ise'),
+                //     config
+                // );
         
             </script>
         </div>      
