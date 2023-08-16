@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="static/graph.js"></script>
 </head>
 <body>
     <div class="full_body"  class="col-lg-4 col-md-6 sx-12">
@@ -41,20 +42,20 @@
 
             <div class="Radiobutton">
                 <div class="ise">
-                <input type="radio" name="ise" value="value1"> 
+                <input type="radio" name="exam_type" value="value1"> 
                     ISE
                 </div>
                 <div class="ese">
-                <input type="radio" name="ese" value="value2"> 
+                <input type="radio" name="exam_type" value="value2"> 
                     ESE
                 </div>
                 <div class="total">
-                <input type="radio" name="total" value="value3"> 
+                <input type="radio" name="exam_type" value="value3"> 
                     Total Marks
                 </div>
             </div>
             
-           <div style="height: 65vh; width: 90%;">
+           <div class="hidden">
                <canvas id="total"></canvas>
            </div>
            <div style="height: 65vh; width: 90%;">

@@ -252,3 +252,17 @@ a.tableform, a.home, a.graph{
   align-items: center;
   justify-content: center;
 }
+
+
+/* GRAPHS */
+
+
+.show{
+  display: block;
+  height: 65vh;
+  width: 90%;
+}
+
+.hidden{
+  display: none;
+}
