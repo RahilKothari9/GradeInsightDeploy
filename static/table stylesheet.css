@@ -138,6 +138,7 @@
     background-color: #5069C1;
     font-size:1.5em ;
     border:black solid ;
+    cursor: pointer;
     }
     #upload{
       width:25% ;
@@ -250,4 +251,18 @@ a.tableform, a.home, a.graph{
   
   align-items: center;
   justify-content: center;
+}
+
+
+/* GRAPHS */
+
+
+.show{
+  display: block;
+  height: 65vh;
+  width: 90%;
+}
+
+.hidden{
+  display: none;
 }

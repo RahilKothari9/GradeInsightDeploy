@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="static/graph.js"></script>
 </head>
 <body>
     <div class="full_body"  class="col-lg-4 col-md-6 sx-12">
@@ -38,22 +39,23 @@
                 <a class="tableform" href="/viewmarks/{{course_id}}">Table Form</a>
                 <a class="graph" href="//">Graph form</a>
             </div>
+
             <div class="Radiobutton">
                 <div class="ise">
-                <input type="radio" name="test" value="value1"> 
+                <input type="radio" name="exam_type" value="value1"> 
                     ISE
                 </div>
                 <div class="ese">
-                <input type="radio" name="test" value="value2"> 
+                <input type="radio" name="exam_type" value="value2"> 
                     ESE
                 </div>
                 <div class="total">
-                <input type="radio" name="test" value="value3"> 
+                <input type="radio" name="exam_type" value="value3"> 
                     Total Marks
                 </div>
             </div>
             
-           <div style="height: 65vh; width: 90%;">
+           <div class="hidden">
                <canvas id="total"></canvas>
            </div>
            <div style="height: 65vh; width: 90%;">
@@ -91,29 +93,33 @@
 
 
                 //chart2
-                // const labels_ise = {{ labels | tojson}};
+                const labels_ise = {{ labels | tojson}};
         
-                // const data2 = {
-                //     labels_ise: labels,
-                //     datasets: [{
-                //         label: 'NO. OF STUDENTS',
-                //         backgroundColor: 'rgb(255, 99, 132)',
-                //         borderColor: 'rgb(0,0,0)',
-                //         data2: {{ data | tojson}},
-                //     }]
-                // };
+                const data2 = {
+                    labels_ise: labels,
+                    datasets: [{
+                        label: 'NO. OF STUDENTS',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(0,0,0)',
+                        data2: {{ data | tojson}},
+                    }]
+                };
         
-                // const config = {
-                //     type: 'bar',
-                //     data: data2,
-                //     options: { maintainAspectRatio: false }
-                // };
+                const config = {
+                    type: 'bar',
+                    data: data2,
+                    options: { maintainAspectRatio: false }
+                };
         
-                // const myChart2 = new Chart(
-                //     document.getElementById('ise'),
-                //     config
-                // );
+                const myChart2 = new Chart(
+                    document.getElementById('ise'),
+                    config
+                );
         
+                const myChart2 = new Chart(
+                    document.getElementById('ese'),
+                    config2
+                );
             </script>
         </div>      
         
