@@ -41,27 +41,27 @@
             </div>
 
             <div class="Radiobutton">
-                <div class="ise">
+                <div class="iseRadio">
                 <input type="radio" name="exam_type" value="value1"> 
                     ISE
                 </div>
-                <div class="ese">
+                <div class="eseRadio">
                 <input type="radio" name="exam_type" value="value2"> 
                     ESE
                 </div>
-                <div class="total">
+                <div class="totalRadio">
                 <input type="radio" name="exam_type" value="value3"> 
                     Total Marks
                 </div>
             </div>
             
-           <div class="hidden">
+           <div class="total hidden">
                <canvas id="total"></canvas>
            </div>
-           <div style="height: 65vh; width: 90%;">
+           <div class="ise hidden" style="height: 65vh; width: 90%;">
                 <canvas id="ise"></canvas>
             </div>
-            <div style="height: 65vh; width: 90%;">
+            <div class="ese hidden" style="height: 65vh; width: 90%;">
                 <canvas id="ese"></canvas>
             </div>
           
@@ -90,36 +90,94 @@
                     document.getElementById('total'),
                     config
                 );
-
-
-                //chart2
-                const labels_ise = {{ labels | tojson}};
+                // //chart2
+                
         
-                const data2 = {
-                    labels_ise: labels,
+            </script>
+            <script>
+                const labelsise = {{ labels_ise | tojson}};
+        
+                const dataise = {
+                    labels: labelsise,
                     datasets: [{
                         label: 'NO. OF STUDENTS',
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(0,0,0)',
-                        data2: {{ data | tojson}},
+                        data: {{ data_ise | tojson}},
                     }]
                 };
         
-                const config = {
+                const config1 = {
                     type: 'bar',
-                    data: data2,
+                    data: dataise,
                     options: { maintainAspectRatio: false }
                 };
         
-                const myChart2 = new Chart(
+                const myChart1 = new Chart(
                     document.getElementById('ise'),
-                    config
+                    config1
                 );
+            </script>
+            <!-- ese chart -->
+            <script>
+                const labelsese = {{ labels_ese | tojson}};
+        
+                const dataese = {
+                    labels: labelsese,
+                    datasets: [{
+                        label: 'NO. OF STUDENTS',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(0,0,0)',
+                        data: {{ data_ese | tojson}},
+                    }]
+                };
+        
+                const config2 = {
+                    type: 'bar',
+                    data: dataese,
+                    options: { maintainAspectRatio: false }
+                };
         
                 const myChart2 = new Chart(
                     document.getElementById('ese'),
                     config2
                 );
+            </script>
+            <script>
+                console.log("hi")
+                const ise = document.querySelector('.iseRadio')
+                const ese = document.querySelector('.eseRadio')
+                const totalButton = document.querySelector('.totalRadio')
+                const totalGraph = document.querySelector('.total')
+                const iseGraph = document.querySelector('.ise')
+                const eseGraph = document.querySelector('.ese')
+
+
+                totalButton.addEventListener("click",()=>{
+                    console.log("hi")
+                    totalGraph.classList.remove("hidden")
+                    totalGraph.classList.add("show")
+                    iseGraph.classList.add("hidden")
+                    eseGraph.classList.add("hidden")
+                })
+                ise.addEventListener("click",()=>{
+
+                    console.log("hi")
+                    totalGraph.classList.add("hidden")
+                    totalGraph.classList.remove("show")
+                    iseGraph.classList.add("show")
+                    iseGraph.classList.remove("hidden")
+                    eseGraph.classList.add("hidden")
+                })
+                ese.addEventListener("click",()=>{
+
+                    console.log("hi")
+                    totalGraph.classList.add("hidden")
+                    totalGraph.classList.remove("show")
+                    eseGraph.classList.add("show")
+                    eseGraph.classList.remove("hidden")
+                    iseGraph.classList.add("hidden")
+                })
             </script>
         </div>      
         
