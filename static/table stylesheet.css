@@ -258,11 +258,21 @@ a.tableform, a.home, a.graph{
 
 
 .show{
-  display: block;
+  
   height: 65vh;
   width: 90%;
+  
 }
 
 .hidden{
   display: none;
+}
+
+.home, .graph, .tableform{
+  text-decoration: none;
+  color: black;
+}
+
+canvas{
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
