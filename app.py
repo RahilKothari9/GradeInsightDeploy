@@ -9,11 +9,11 @@ import mysql.connector
 from pathlib import Path
 import sqlite3
 import math
-from dotenv import load_dotenv
+
 import smtplib
 import ssl
 from email.message import EmailMessage
-load_dotenv()
+
 
 
 sqliteConnection = sqlite3.connect('GradeInsight.db', check_same_thread=False)
@@ -221,14 +221,6 @@ def graph(course_id):
         r = int(marks/5)
 
         data2[r] += 1
-        #print(ise)
-
-        # if request.form.get("ese"):
-        #     return render_template('graph.html', course_id=course_id, labels=labels, data=data1)
-        # if request.form.get("ise"):
-        #     return render_template('graph.html', course_id=course_id, labels=labels2, data=data2)
-        # if request.form.get("total_marks"):
-        #     return render_template('graph.html', course_id=course_id, labels=labels, data=data)
     return render_template('graph.html', course_id=course_id, labels=labels, data=data, labels_ise=labels2, data_ise=data2, labels_ese=labels3, data_ese=data1)
 
 
