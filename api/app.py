@@ -1,7 +1,7 @@
 from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory, session
 import os
 from werkzeug.utils import secure_filename
-import pandas as pd
+# import pandas as pd
 from flask_session import Session
 from api.helpers import login_required, error
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -184,7 +184,7 @@ def upload_file(course_id):
 @login_required
 def graph(course_id):
     xl = 'uploads/'+ course_id
-    df = pd.read_excel(io = xl) # can also index sheet by name or fetch all sheets
+    #df = pd.read_excel(io = xl) # can also index sheet by name or fetch all sheets
     name = df['NAME'].tolist()
     somaiyaid = df['SOMAIYA_ID'].tolist()
     rollno = df['ROLLNO'].tolist()
@@ -229,7 +229,7 @@ def upload(filename):
     if(not path.is_file()):
         return error("You have not uploaded an excel file for this yet.(Frontend peeps link to /fileupload/course_id pls)")
     xl = 'uploads/'+filename
-    df = pd.read_excel(io = xl)
+    #df = pd.read_excel(io = xl)
     #print(1)
     #print(df)
     return render_template('table.html',  tables=[df.to_html(classes='data')], titles=df.columns.values, course_id=filename)
@@ -240,7 +240,7 @@ def sendmail(courseid):
     path = Path("uploads/" + courseid)
 
     xl = 'uploads/'+courseid
-    df = pd.read_excel(io = xl)
+    #df = pd.read_excel(io = xl)
     name = df['NAME'].tolist()
     somaiyaid = df['SOMAIYA_ID'].tolist()
     rollno = df['ROLLNO'].tolist()
