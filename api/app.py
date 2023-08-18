@@ -5,11 +5,8 @@ import pandas as pd
 from flask_session import Session
 from api.helpers import login_required, error
 from werkzeug.security import check_password_hash, generate_password_hash
-import mysql.connector
 from pathlib import Path
 import sqlite3
-import math
-
 import smtplib
 import ssl
 from email.message import EmailMessage
